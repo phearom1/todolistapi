@@ -9,13 +9,10 @@ const listRouter = require('./routes/list')
 const app = express()
 const port = process.env.PORT || 8000
 
-app.use(express.json())
-app.use(express.urlencoded({ extended: false }))
-app.use(
-  cors({
-    origin: '*',
-  })
-)
+//just some bodyparser that i dont fully understand yet
+app.use(express.json({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 app.use('/api/list', listRouter)
 
