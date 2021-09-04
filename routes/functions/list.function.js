@@ -34,10 +34,19 @@ const deleteOneFunction = async (req, res) => {
     .then(() => res.status(201).json({ deletedCount: 1 }))
     .catch(err => console.error(err))
 }
+
+const putFunction = async (req, res) => {
+  const { id } = req.params
+  const { body } = req
+  await Todo.findByIdAndUpdate(id, body)
+    .then(() => res.status(201).json('Updated'))
+    .catch(err => console.error(err))
+}
 module.exports = {
   getAllFunction,
   postFunction,
   deleteAllFunction,
   getOneFunction,
   deleteOneFunction,
+  putFunction,
 }
