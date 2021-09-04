@@ -5,6 +5,7 @@ const {
   deleteAllFunction,
   getOneFunction,
   deleteOneFunction,
+  putFunction,
 } = require('./functions/list.function')
 
 const router = express.Router()
@@ -15,6 +16,10 @@ router
   .post(postFunction)
   .delete(deleteAllFunction)
 
-router.route('/:id').get(getOneFunction).delete(deleteOneFunction)
+router
+  .route('/:id')
+  .get(getOneFunction)
+  .delete(deleteOneFunction)
+  .put(putFunction)
 
 module.exports = router
